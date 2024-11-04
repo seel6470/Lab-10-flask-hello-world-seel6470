@@ -1,7 +1,11 @@
 from flask import Flask
+import psycopg2
+import os
 app = Flask(__name__)
 
-DB_URL = "postgresql://lab_10_test_db_user:tQ7u6YUYctCEThZ8765T9Bq38FDzJiI8@dpg-csifge1u0jms73fbcag0-a/lab_10_test_db"
+# Trying to use environment variable to make the database url more secure
+# Set the environment variable in the web service in render
+DB_URL = os.getenv("DB_URL", "")
 
 @app.route('/')
 def hello_world():
